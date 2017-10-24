@@ -1,0 +1,11 @@
+{
+    "company_name": "Intelex", 
+    "contact_email": "gabor.albitz@intelex.com", 
+    "contact_name": "Gabor Albitz", 
+    "hostname": "0aa809498f31481a857ae453b3aabf63", 
+    "instance_count": 10, 
+    "license_date": 2145804346, 
+    "license_key": "8013895863910fbbfd29e7eb1d1504d1ecf5b8e84fee91f48626f0f46f6fa3c6", 
+    "license_type": "basic", 
+    "subscription_name": "Ansible Tower by Red Hat, Self-Support (10 Managed Nodes)"
+}
