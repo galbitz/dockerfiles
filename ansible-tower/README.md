@@ -4,11 +4,7 @@
 
 ### 1. Build or pull the image
 
-```docker build -t dayglo/ansibletower .```
-
-or 
-
-```docker pull dayglo/ansibletower ```
+```build.sh```
 
 ### 2. Get a license
 
@@ -21,10 +17,5 @@ Save it into license.txt somewhere.
 ### 3. Run the image
 
 ```
-docker run -it \
-	-p 80:80 -p 443:443 \
-	-v /wherever/you/put/your/license/file/license.txt:/etc/tower/license \
-	--name tower \
-	--privileged \
-	dayglo/ansibletower
+start.sh
 ```
