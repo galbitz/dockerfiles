@@ -42,6 +42,9 @@ RUN setx /m PATH "%PATH%;C:\Windows\Microsoft.NET\Framework\v4.0.30319"
 #set sdk tools folder 
 RUN setx /m TargetFrameworkSDKToolsDirectory "c:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools"
 
+#install Windows 10 SDK (aspnet merge tool)
+RUN choco install windows-sdk-10.0 -y
+
 #install Webdeploy 3.5
 ADD https://download.microsoft.com/download/D/4/4/D446D154-2232-49A1-9D64-F5A9429913A4/WebDeploy_amd64_en-US.msi WebDeploy_amd64_en-US.msi
 RUN msiexec /i WebDeploy_amd64_en-US.msi /qn
