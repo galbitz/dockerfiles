@@ -1,0 +1,1 @@
+docker build -t galbitz/sql2008r2tenant:latest . --no-cache

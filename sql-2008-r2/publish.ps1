@@ -1,0 +1,1 @@
+docker push galbitz/sql2008r2:latest

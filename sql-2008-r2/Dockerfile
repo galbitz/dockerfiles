@@ -17,6 +17,9 @@ ENV ACCEPT_EULA _
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
+RUN install-packageprovider -name nuget -force
+RUN install-module -name sqlserver -Force
+
 # make install files accessible
 COPY start.ps1 /
 WORKDIR /
@@ -26,7 +29,7 @@ WORKDIR /
 
 RUN Invoke-WebRequest -Uri $env:sql_express_download_url -OutFile sqlexpress.exe ; \
         7z x .\sqlexpress.exe -osetup ; \
-        .\setup\setup.exe /q /ACTION=Install /SKIPRULES=PerfMonCounterNotCorruptedCheck /INSTANCENAME=SQLEXPRESS /FEATURES=SQLEngine,FullText /SQLSVCACCOUNT='NT AUTHORITY\System' /SQLSYSADMINACCOUNTS='BUILTIN\ADMINISTRATORS' /TCPENABLED=1 /NPENABLED=0 /IACCEPTSQLSERVERLICENSETERMS /SQLTEMPDBDIR='C:\SQL2008\TempDB\' /SQLUSERDBDIR='C:\SQL2008\SQLData\' /SQLUSERDBLOGDIR='C:\SQL2008\SQLLog\' ; \
+        .\setup\setup.exe /q /ACTION=Install /SKIPRULES=PerfMonCounterNotCorruptedCheck /INSTANCENAME=SQLEXPRESS /FEATURES=SQLEngine,FullText /SQLSVCACCOUNT='NT AUTHORITY\System' /SQLSYSADMINACCOUNTS='BUILTIN\ADMINISTRATORS' /TCPENABLED=1 /NPENABLED=0 /IACCEPTSQLSERVERLICENSETERMS /SQLTEMPDBDIR='C:\SQL2008\TempDB\' /SQLUSERDBDIR='C:\SQL2008\SQLData\' /SQLUSERDBLOGDIR='C:\SQL2008\SQLData\' ; \
         Remove-Item -Recurse -Force sqlexpress.exe, setup
 
 RUN stop-service MSSQL`$SQLEXPRESS ; \
